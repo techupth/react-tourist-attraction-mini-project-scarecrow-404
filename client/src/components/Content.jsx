@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import ShareIcon from "@mui/icons-material/Share";
+import { IconButton, Tooltip } from "@mui/material";
 import axios from "axios";
 function Content() {
   const [data, setData] = useState([]);
@@ -30,6 +31,9 @@ function Content() {
         : category;
       return updateValue;
     });
+  }
+  function copyUrlToClipboard(url) {
+    navigator.clipboard.writeText(url);
   }
   return (
     <div className="flex flex-col justify-center w-[100%] gap-7">
@@ -68,9 +72,10 @@ function Content() {
                 </p>
                 <p>
                   หมวด:
-                  {item.tags.map((tag) => {
+                  {item.tags.map((tag, index) => {
                     return (
                       <button
+                        key={index}
                         className=" ml-1"
                         onClick={() => {
                           handleCategoryClick(tag);
@@ -96,6 +101,16 @@ function Content() {
                   })}
                 </div>
               </div>
+              <Tooltip title="Copy URL">
+                <IconButton
+                  onClick={() => {
+                    copyUrlToClipboard(item.url);
+                  }}
+                  style={{ color: "blue" }}
+                >
+                  <ShareIcon />
+                </IconButton>
+              </Tooltip>
             </div>
           );
         })
