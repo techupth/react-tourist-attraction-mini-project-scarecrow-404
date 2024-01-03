@@ -22,6 +22,15 @@ function Content() {
   useEffect(() => {
     getData();
   }, [searchInput]);
+
+  function handleCategoryClick(category) {
+    setSearchInput((currentValue) => {
+      const updateValue = currentValue
+        ? `${currentValue} ${category}`
+        : category;
+      return updateValue;
+    });
+  }
   return (
     <div className="flex flex-col justify-center w-[100%] gap-7">
       <input
@@ -60,7 +69,16 @@ function Content() {
                 <p>
                   หมวด:
                   {item.tags.map((tag) => {
-                    return <p> {tag}</p>;
+                    return (
+                      <button
+                        className=" ml-1"
+                        onClick={() => {
+                          handleCategoryClick(tag);
+                        }}
+                      >
+                        {tag}
+                      </button>
+                    );
                   })}
                 </p>
                 <div className="flex gap-5">
