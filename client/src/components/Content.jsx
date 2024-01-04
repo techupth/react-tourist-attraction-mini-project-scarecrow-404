@@ -119,16 +119,18 @@ function Content() {
                     })}
                   </div>
                 </div>
-                <Tooltip title="Copy URL">
-                  <IconButton
-                    onClick={() => {
-                      copyUrlToClipboard(item.url);
-                    }}
-                    style={{ color: "blue" }}
-                  >
-                    <ShareIcon />
-                  </IconButton>
-                </Tooltip>
+                <div>
+                  <Tooltip title="Copy URL">
+                    <IconButton
+                      onClick={() => {
+                        copyUrlToClipboard(item.url);
+                      }}
+                      style={{ color: "blue" }}
+                    >
+                      <ShareIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
               </div>
             );
           })
