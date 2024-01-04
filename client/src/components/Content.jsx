@@ -37,7 +37,7 @@ function Content() {
   }
   return (
     <>
-      <h1 className=" pl-16">ค้นหาที่เที่ยว</h1>
+      <h1 className=" pl-[10%]">ค้นหาที่เที่ยว</h1>
       <div className="flex flex-col items-center w-[100%] gap-7 p-10 ">
         <input
           type="text"
@@ -74,8 +74,8 @@ function Content() {
                   </p>
                   <p className="text-gray-6007">
                     หมวด:
-                    {item.tags.map((tag, index) => {
-                      return (
+                    {item.tags.map((tag, index, self) => {
+                      return index + 1 < self.length ? (
                         <button
                           key={index}
                           className=" ml-1 text-gray-600 underline"
@@ -83,8 +83,24 @@ function Content() {
                             handleCategoryClick(tag);
                           }}
                         >
+                          {/* {console.log(self.length, index)} */}
                           {tag}
                         </button>
+                      ) : (
+                        <>
+                          {" "}
+                          และ
+                          <button
+                            key={index}
+                            className=" ml-1 text-gray-600 underline"
+                            onClick={() => {
+                              handleCategoryClick(tag);
+                            }}
+                          >
+                            {/* {console.log(self.length, index)} */}
+                            {tag}
+                          </button>
+                        </>
                       );
                     })}
                   </p>
