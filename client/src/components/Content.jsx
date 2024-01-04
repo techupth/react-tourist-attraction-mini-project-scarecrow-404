@@ -63,7 +63,7 @@ function Content() {
                     {item.title}
                   </a>
                   <p className=" text-gray-600">
-                    {item.description.substring(0, 100)}...
+                    {item.description.substring(0, 99)}...
                     <a
                       className=" text-blue-400 underline"
                       href={item.url}
